@@ -5,7 +5,6 @@
       <directory suffix=".php">src/lib/</directory>
     </whitelist>
   </filter>
-  <!--
   <logging>
     <log type="coverage-clover" target="/tmp/coverage.xml"/>
     <log type="coverage-text" target="php://stdout" showUncoveredFiles="false"/>
@@ -18,7 +17,7 @@
             <string>Phine\FileSystem</string>
           </element>
           <element key="repo_token">
-            <string>?</string>
+            <string>Hj2SkRQMoLhslMYTGdrzhPcnFgTE4lg5b</string>
           </element>
           <element key="target_url">
             <string>https://coveralls.io/api/v1/jobs</string>
@@ -36,7 +35,6 @@
       </arguments>
     </listener>
   </listeners>
-  -->
   <testsuites>
     <testsuite name="Phine File System Test Suite">
       <directory phpVersion="5.3.3" phpVersionOperator=">=" suffix="Test.php">src/tests/</directory>
