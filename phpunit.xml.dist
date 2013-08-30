@@ -14,7 +14,7 @@
       <arguments>
         <array>
           <element key="namespace">
-            <string>Phine\FileSystem</string>
+            <string>Phine\Path</string>
           </element>
           <element key="repo_token">
             <string>Hj2SkRQMoLhslMYTGdrzhPcnFgTE4lg5b</string>
@@ -36,7 +36,7 @@
     </listener>
   </listeners>
   <testsuites>
-    <testsuite name="Phine File System Test Suite">
+    <testsuite name="Phine Path Test Suite">
       <directory phpVersion="5.3.3" phpVersionOperator=">=" suffix="Test.php">src/tests/</directory>
     </testsuite>
   </testsuites>
