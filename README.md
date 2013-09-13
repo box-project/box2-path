@@ -62,6 +62,11 @@ Via [Composer][]:
 
     $ composer require "phine/path=~1.0"
 
+Documentation
+-------------
+
+You can find the documentation in the [`docs/`](docs/) directory.
+
 License
 -------
 
