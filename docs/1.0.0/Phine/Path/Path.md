@@ -52,7 +52,9 @@ for the current path.
     - `$env` (`boolean`) &mdash; Only use the environment variables?
 - It returns a(n) `string` value.
 - It throws one of the following exceptions:
-    - [`Exception`](http://php.net/class.Exception) &mdash;     - [`PathException`](http://php.net/class.PathException) &mdash; If the path could not be found.
+    - [`Exception`](http://php.net/class.Exception) &mdash; 
+    - [`PathException`](http://php.net/class.PathException) &mdash; If the path could not be found.
+
 ### `isAbsolute()` <a name="isAbsolute"></a>
 
 Checks if a file system path is absolute.
@@ -97,7 +99,9 @@ Recursively removes a file system path.
     - `$path` (`string`) &mdash; The path to remove.
 - It returns a(n) `integer` value.
 - It throws one of the following exceptions:
-    - [`Exception`](http://php.net/class.Exception) &mdash;     - [`PathException`](http://php.net/class.PathException) &mdash; If the path could not be removed.
+    - [`Exception`](http://php.net/class.Exception) &mdash; 
+    - [`PathException`](http://php.net/class.PathException) &mdash; If the path could not be removed.
+
 ### `split()` <a name="split"></a>
 
 Splits the file system path.
