@@ -32,7 +32,8 @@ Canonicalizes the file system path.
 - It is a **public static** method.
 - It accepts the following parameter(s):
     - `$path` (`string`) &mdash; The path to canoncalize.
-- It returns a(n) `string` value.
+- _Returns:_ The canoncalized path.
+    - `string`
 
 ### `current()` <a name="current"></a>
 
@@ -50,10 +51,11 @@ for the current path.
 - It is a **public static** method.
 - It accepts the following parameter(s):
     - `$env` (`boolean`) &mdash; Only use the environment variables?
-- It returns a(n) `string` value.
+- _Returns:_ The current working directory path.
+    - `string`
 - It throws one of the following exceptions:
-    - [`Exception`](http://php.net/class.Exception) &mdash; 
-    - [`PathException`](http://php.net/class.PathException) &mdash; If the path could not be found.
+    - [`Exception`](http://php.net/class.Exception)
+    - `PathException` &mdash; If the path could not be found.
 
 ### `isAbsolute()` <a name="isAbsolute"></a>
 
@@ -64,7 +66,8 @@ Checks if a file system path is absolute.
 - It is a **public static** method.
 - It accepts the following parameter(s):
     - `$path` (`string`) &mdash; The path to check.
-- It returns a(n) `boolean` value.
+- _Returns:_ Returns `true` if absolute, `false` if not.
+    - `boolean`
 
 ### `isLocal()` <a name="isLocal"></a>
 
@@ -75,7 +78,8 @@ Checks if a path is a local file system path.
 - It is a **public static** method.
 - It accepts the following parameter(s):
     - `$path` (`string`) &mdash; The path to check.
-- It returns a(n) `boolean` value.
+- _Returns:_ Returns `true` if local, `false` if not.
+    - `boolean`
 
 ### `join()` <a name="join"></a>
 
@@ -86,7 +90,8 @@ Joins a split file system path.
 - It is a **public static** method.
 - It accepts the following parameter(s):
     - `$path` (`array`) &mdash; The split path.
-- It returns a(n) `string` value.
+- _Returns:_ The joined path.
+    - `string`
 
 ### `remove()` <a name="remove"></a>
 
@@ -97,10 +102,11 @@ Recursively removes a file system path.
 - It is a **public static** method.
 - It accepts the following parameter(s):
     - `$path` (`string`) &mdash; The path to remove.
-- It returns a(n) `integer` value.
+- _Returns:_ The number of paths removed.
+    - `integer`
 - It throws one of the following exceptions:
-    - [`Exception`](http://php.net/class.Exception) &mdash; 
-    - [`PathException`](http://php.net/class.PathException) &mdash; If the path could not be removed.
+    - [`Exception`](http://php.net/class.Exception)
+    - `PathException` &mdash; If the path could not be removed.
 
 ### `split()` <a name="split"></a>
 
@@ -111,5 +117,6 @@ Splits the file system path.
 - It is a **public static** method.
 - It accepts the following parameter(s):
     - `$path` (`string`) &mdash; The path to split.
-- It returns a(n) `array` value.
+- _Returns:_ The split path.
+    - `array`
 
