@@ -111,7 +111,7 @@ class PathTest extends TestCase
         unlink($dir);
         mkdir($dir);
 
-        Path::copy(__DIR__ . '/../../..', $dir);
+        $this->assertEquals(1, Path::copy(__DIR__ . '/../../..', $dir));
 
         $this->assertFileEquals(
             __FILE__,
@@ -120,7 +120,7 @@ class PathTest extends TestCase
 
         file_put_contents("$dir/Phine/Path/Tests/PathTest.php", 'test');
 
-        Path::copy(__DIR__ . '/../../..', $dir, false);
+        $this->assertEquals(0, Path::copy(__DIR__ . '/../../..', $dir, false));
 
         $this->assertEquals(
             'test',

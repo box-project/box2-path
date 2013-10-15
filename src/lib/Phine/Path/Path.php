@@ -42,6 +42,8 @@ class Path
      * @param string  $to        The path to copy to.
      * @param boolean $overwrite Overwrite existing files?
      *
+     * @return integer The number of files or empty directories copied.
+     *
      * @throws Exception
      * @throws PathException If the path could not be copied.
      */
@@ -54,14 +56,18 @@ class Path
             );
         }
 
+        $count = 0;
+
         if (is_file($from)) {
             if (file_exists($to) && !$overwrite) {
-                return;
+                return $count;
             }
 
             if (!@copy($from, $to)) {
                 throw PathException::createUsingLastError();
             }
+
+            $count++;
         } else {
             if (!file_exists($to) && !@mkdir($to)) {
                 throw PathException::createUsingLastError();
@@ -71,20 +77,30 @@ class Path
                 throw PathException::createUsingLastError();
             }
 
+            $empty = true;
+
             while (false !== ($entry = readdir($handle))) {
                 if (('.' === $entry) || ('..' === $entry)) {
                     continue;
                 }
 
-                self::copy(
+                $empty = false;
+
+                $count += self::copy(
                     $from . DIRECTORY_SEPARATOR . $entry,
                     $to . DIRECTORY_SEPARATOR . $entry,
                     $overwrite
                 );
             }
 
+            if ($empty) {
+                $count++;
+            }
+
             closedir($handle);
         }
+
+        return $count;
     }
 
     /**
