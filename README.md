@@ -17,6 +17,9 @@ use Phine\Path\Path;
 var_export(Path::canonical('/path/to/../canonicalize'));
 // /path/canonicalize
 
+var_export(Path::copy('/path/to/copy', '/path/to/copy/to'));
+// 123 (number of files or empty directories copied)
+
 var_export(Path::current());
 // /home/user
 
