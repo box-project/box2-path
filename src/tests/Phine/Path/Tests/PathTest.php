@@ -100,6 +100,48 @@ class PathTest extends TestCase
     }
 
     /**
+     * Checks that a directory is recursively copied to another location. It
+     * also checks to make sure that files are not overwritten if the flag is
+     * disabled.
+     */
+    public function testCopy()
+    {
+        $dir = tempnam(sys_get_temp_dir(), 'path');
+
+        unlink($dir);
+        mkdir($dir);
+
+        Path::copy(__DIR__ . '/../../..', $dir);
+
+        $this->assertFileEquals(
+            __FILE__,
+            $dir . '/Phine/Path/Tests/PathTest.php'
+        );
+
+        file_put_contents("$dir/Phine/Path/Tests/PathTest.php", 'test');
+
+        Path::copy(__DIR__ . '/../../..', $dir, false);
+
+        $this->assertEquals(
+            'test',
+            file_get_contents($dir . '/Phine/Path/Tests/PathTest.php')
+        );
+    }
+
+    /**
+     * Checks that an exception is thrown if the path does not exist.
+     */
+    public function testCopyNotExist()
+    {
+        $this->setExpectedException(
+            'Phine\\Path\\Exception\\PathException',
+            'The path "/does/not/exist" does not exist.'
+        );
+
+        Path::copy('/does/not/exist', '/should/not/be/copied');
+    }
+
+    /**
      * Checks that the `Path::current()` method is returning the working
      * directory path from `getcwd()`. If `getcwd()` returns false, the
      * test will be skipped.

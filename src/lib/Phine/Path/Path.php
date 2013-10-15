@@ -36,6 +36,58 @@ class Path
     }
 
     /**
+     * Copies an existing file or directory path to a destination.
+     *
+     * @param string  $from      The path to copy from.
+     * @param string  $to        The path to copy to.
+     * @param boolean $overwrite Overwrite existing files?
+     *
+     * @throws Exception
+     * @throws PathException If the path could not be copied.
+     */
+    public static function copy($from, $to, $overwrite = true)
+    {
+        if (!file_exists($from)) {
+            throw PathException::createUsingFormat(
+                'The path "%s" does not exist.',
+                $from
+            );
+        }
+
+        if (is_file($from)) {
+            if (file_exists($to) && !$overwrite) {
+                return;
+            }
+
+            if (!@copy($from, $to)) {
+                throw PathException::createUsingLastError();
+            }
+        } else {
+            if (!file_exists($to) && !@mkdir($to)) {
+                throw PathException::createUsingLastError();
+            }
+
+            if (!($handle = @opendir($from))) {
+                throw PathException::createUsingLastError();
+            }
+
+            while (false !== ($entry = readdir($handle))) {
+                if (('.' === $entry) || ('..' === $entry)) {
+                    continue;
+                }
+
+                self::copy(
+                    $from . DIRECTORY_SEPARATOR . $entry,
+                    $to . DIRECTORY_SEPARATOR . $entry,
+                    $overwrite
+                );
+            }
+
+            closedir($handle);
+        }
+    }
+
+    /**
      * Returns the current working directory path.
      *
      * The `getcwd()` function may return `false` if the parent of the current
